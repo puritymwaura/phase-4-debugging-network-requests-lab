@@ -7,8 +7,8 @@ class ToysController < ApplicationController
   end
 
   def create
-    toy = Toys.create(toy_params)
-    render json: toy, status: :created
+    toys = Toy.create(toy_params)
+    render json: toys, status: :created
   end
 
   def update
