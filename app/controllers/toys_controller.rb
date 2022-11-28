@@ -9,6 +9,9 @@ class ToysController < ApplicationController
   def create
     toys = Toy.create(toy_params)
     render json: toys, status: :created
+
+  rescue ActiveRecord::RecordInvalid, => invalid 
+    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
 
   def update
